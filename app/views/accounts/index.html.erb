@@ -1,0 +1,5 @@
+<h3>Contas</h3>
+
+<% @accounts.each do |account| %>
+    <p> <%= link_to  account.account_number, account_path(account), class: 'link' %></p>    
+<% end %>

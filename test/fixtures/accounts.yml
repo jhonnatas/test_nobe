@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_number: MyString
+  bk_number: MyString
+  bk_branch: MyString
+  details: MyText
+  user: one
+
+two:
+  account_number: MyString
+  bk_number: MyString
+  bk_branch: MyString
+  details: MyText
+  user: two

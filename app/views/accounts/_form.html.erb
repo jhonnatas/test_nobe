@@ -1,0 +1,15 @@
+<h3>Cadastrar conta</h3>
+
+<%= form_for(@account) do |f| %>
+
+<%= f.label :account_number, 'número' %>
+<%= f.text_field :account_number%>
+<%= f.label :bk_branch, 'Agência' %>
+<%= f.text_field :bk_branch %>
+<%= f.label :bk_number, 'Número do banco' %>
+<%= f.text_field :bk_number %>
+<%= f.label :details, 'Detalhes' %>
+<%= f.text_area :details %>
+<%= f.submit %>
+
+<% end %>
