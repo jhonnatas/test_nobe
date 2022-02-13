@@ -1,6 +1,13 @@
 <h3>Detalhes da conta</h3>
 
 <p>Banco número: <%= @account.bk_number %></p>
+
+<% if @account.account_active? %>
+    <p>Conta ativa</p>
+<% else%>
+    <p>Conta inativa</p>
+<% end %>    
+
 <p>Agência: <%= @account.bk_branch %></p>
 <p>Conta número: <%= @account.account_number %></p> 
 <p>Detalhes: <%= @account.details %></p>

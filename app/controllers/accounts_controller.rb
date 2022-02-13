@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @accounts = Account.all
   end
@@ -37,6 +39,6 @@ class AccountsController < ApplicationController
   private 
 
   def account_params
-    params.require(:account).permit(:id, :account_number, :bk_branch, :bk_number, :details, :user_id)
+    params.require(:account).permit(:id, :account_active, :account_number, :bk_branch, :bk_number, :details, :user_id)
   end
 end
