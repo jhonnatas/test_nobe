@@ -10,6 +10,8 @@
     <%= f.text_field :bk_branch %>
     <%= f.label :bk_number, 'Número do banco' %>
     <%= f.text_field :bk_number %>
+    <%= f.label :balance, 'Deposito de abertura de conta' %>
+    <%= f.number_field :balance, step: 0.01 %>
     <%= f.label :details, 'Detalhes' %>
     <%= f.text_area :details %>
     <%= f.submit %>

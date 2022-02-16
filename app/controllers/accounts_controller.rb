@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @accounts = Account.all
+    @accounts = Account.where(user_id: current_user.id )#Only the current user's accounts listed    
   end
 
   def show
@@ -16,8 +16,12 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     @account.user_id = current_user.id
-    @account.save
-    redirect_to account_path(@account)
+    if @account.save
+      redirect_to account_path(@account), notice: "A conta foi criada!"
+    else
+      flash[:alert] = @account.errors.full_messages.join(', ')
+      render :new
+    end
   end
 
   def edit
@@ -39,6 +43,6 @@ class AccountsController < ApplicationController
   private 
 
   def account_params
-    params.require(:account).permit(:id, :account_active, :account_number, :bk_branch, :bk_number, :details, :user_id)
+    params.require(:account).permit(:id, :account_active, :account_number, :bk_branch, :bk_number, :details, :balance, :user_id)
   end
 end

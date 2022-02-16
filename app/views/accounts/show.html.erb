@@ -8,8 +8,12 @@
     <p>Conta inativa</p>
 <% end %>    
 
+<p>Data de abertura:  <%= @account.created_at %></p>
 <p>Agência: <%= @account.bk_branch %></p>
 <p>Conta número: <%= @account.account_number %></p> 
+<p>Depósito inicial: <%= @account.balance %></p> 
 <p>Detalhes: <%= @account.details %></p>
+
+<%= link_to 'Voltar', accounts_path, class: 'btn btn-default'%>
 
 
