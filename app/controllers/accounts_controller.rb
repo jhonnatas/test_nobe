@@ -30,8 +30,12 @@ class AccountsController < ApplicationController
 
   def update
     @account = Account.find(params[:id])
-    @account.update(account_params)
-    redirect_to account_path(@account)
+    if @account.update(account_params)
+      redirect_to account_path(@account), notice: "A conta foi atualizada!"
+    else
+      flash[:alert] = @account.errors.full_messages.join(', ')
+      render :edit
+    end 
   end
 
   def destroy

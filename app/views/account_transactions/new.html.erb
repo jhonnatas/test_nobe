@@ -1,0 +1,6 @@
+<h3>AccountTransactions#new</h3>
+ 
+<% if (params.has_key?(:account)) %>
+    <p>Conta: <%= params[:account]%> </p>
+<%end%>
+<%= render 'form'%>

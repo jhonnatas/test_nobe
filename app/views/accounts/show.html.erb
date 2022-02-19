@@ -14,6 +14,9 @@
 <p>Depósito inicial: <%= @account.balance %></p> 
 <p>Detalhes: <%= @account.details %></p>
 
+<!-- sending the accounts id to transactions -->
+<%= link_to 'Transação', new_account_transaction_path(account: @account.account_number, account_id: @account.id) %>
+
 <%= link_to 'Voltar', accounts_path, class: 'btn btn-default'%>
 
 
