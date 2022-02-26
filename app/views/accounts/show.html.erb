@@ -8,14 +8,22 @@
     <p>Conta inativa</p>
 <% end %>    
 
-<p>Data de abertura:  <%= @account.created_at %></p>
+<p>Data de abertura:  <%= l @account.created_at, format: "%d/%m/%Y" %></p>
 <p>Agência: <%= @account.bk_branch %></p>
 <p>Conta número: <%= @account.account_number %></p> 
-<p>Depósito inicial: <%= @account.balance %></p> 
+
 <p>Detalhes: <%= @account.details %></p>
 
+<% @account.account_transactions.each do |t| %>
+    <p>tipo: <%= t.tr_type %> - valor: <%= t.amount %></p>
+<% end %>
+
+<%= render 'form_transf' %>
+
 <!-- sending the accounts id to transactions -->
-<%= link_to 'Transação', new_account_transaction_path(account: @account.account_number, account_id: @account.id) %>
+<%= link_to 'Depósito', new_account_transaction_path(account_id: @account.id, tr_type: 'C', account_active: @account.account_active) %>
+<%= link_to 'Saque', new_account_transaction_path(account_id: @account.id, tr_type: 'D', account_active: @account.account_active) %>
+
 
 <%= link_to 'Voltar', accounts_path, class: 'btn btn-default'%>
 

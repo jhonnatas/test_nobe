@@ -44,6 +44,25 @@ class AccountsController < ApplicationController
     redirect_to account_index_path
   end
 
+  def transference 
+    @conta_dest     = Account.find(params[:dest_account_id])
+    @aconta_origem  = Account.find(params[:origin_account_id])
+    saldo_origem = @aconta_origem.balance
+    value_debt = params[:balance].to_d
+    redirect_to accounts_path
+
+   # if (value_debt > 0)
+     # if (value_debt <= saldo_origem)
+     #   msg = AppTransfer.call(params[:id],params[:conta_dest_id], value_debt)
+     #   redirect_to accounts_path, notice: msg
+     # else
+     #   flash.now[ :alert ] = 'Saldo indisponível para esta operação!'
+      #  render :show
+     # end
+   # end
+  end
+
+
   private 
 
   def account_params

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_222754) do
+ActiveRecord::Schema.define(version: 2022_02_20_154809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_222754) do
     t.string "description", limit: 80
     t.string "doc_ref", limit: 20
     t.string "tr_type", limit: 1
-    t.decimal "amount", precision: 12, scale: 2
+    t.decimal "amount", default: "0.0"
     t.bigint "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

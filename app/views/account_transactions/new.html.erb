@@ -1,4 +1,8 @@
-<h3>AccountTransactions#new</h3>
+<% if params[:tr_type] == 'C'%>
+    <h3>Deṕosito</h3>
+<% else %>
+    <h3>Saque</h3>
+<% end %>
  
 <% if (params.has_key?(:account)) %>
     <p>Conta: <%= params[:account]%> </p>

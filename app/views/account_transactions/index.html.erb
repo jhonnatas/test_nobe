@@ -1,2 +1,8 @@
 <h1>AccountTransactions#index</h1>
 <p>Find me in app/views/account_transactions/index.html.erb</p>
+
+<% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+            <%= value %>
+      </div>
+<% end %>

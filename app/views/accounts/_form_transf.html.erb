@@ -1,0 +1,7 @@
+<%= form_tag("/transference", :method => "post") do %>
+   <%= hidden_field_tag 'origin_account_id', @account.id %>
+   <%= label_tag 'Transferencia para a conta' %>
+   <%= select_tag 'dest_account_id', options_for_select(Account.where.not(account_number: @account.account_number).collect{ |c| [c.account_number, c.id]})  %>
+   <%= number_field_tag 'balance', nil, step: 0.01, min: 0.01 %>
+   <%= submit_tag("Transferir") %>
+<% end %>

@@ -1,5 +1,12 @@
-<h3>Contas</h3>
+<h3>Suas contas</h3>
 
+<% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+            <%= value %>
+      </div>
+<% end %>
+<%= @sessi %>
 <% @accounts.each do |account| %>
-    <p> <%= link_to  account.account_number, account_path(account), class: 'link' %></p>    
+      <p>Código da conta: <%= account.id %></p>
+      <p>Código do cliente: <%= account.user_id %><%= link_to account.account_number, account_path(account), class: 'link' %></p>    
 <% end %>

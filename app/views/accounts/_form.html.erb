@@ -1,7 +1,6 @@
 <h3>Cadastrar conta</h3>
 
 <%= form_for(@account) do |f| %>
-
     <%= f.label :account_active, 'Conta ativa' %>
     <%= f.check_box :account_active %>
     <%= f.label :account_number, 'número' %>
@@ -11,9 +10,8 @@
     <%= f.label :bk_number, 'Número do banco' %>
     <%= f.text_field :bk_number %>
     <%= f.label :balance, 'Deposito de abertura de conta' %>
-    <%= f.number_field :balance, step: 0.01 %>
+    <%= f.number_field :balance, min: 0.00, step: 0.01 %>
     <%= f.label :details, 'Detalhes' %>
     <%= f.text_area :details %>
     <%= f.submit %>
-
 <% end %>

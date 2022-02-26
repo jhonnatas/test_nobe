@@ -1,5 +1,6 @@
 class AccountTransactionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_active
 
   def index
   
@@ -36,9 +37,18 @@ class AccountTransactionsController < ApplicationController
     end 
   end 
 
+  def transf
+    @to_account = Account.find(params[:to_dest_account])
+
+
+
   private 
   def account_transaction_params 
     params.require(:account_transaction).permit(:date, :doc_ref, :tr_type, :description, :amount, :account_id)
+  end
+  
+  def check_active
+    redirect_to accounts_path, alert: 'Por favor, escolha uma conta ativa.' unless params[:account_active] == "true"
   end
 end
 
