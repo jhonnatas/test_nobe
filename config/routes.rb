@@ -5,12 +5,11 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  post '/transference', to: 'accounts#transference' 
+
   resources :accounts
   resources :account_transactions
-
-  post '/transference', to: 'accounts#transference' 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  
 end

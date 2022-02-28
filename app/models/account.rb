@@ -19,14 +19,16 @@ class Account < ApplicationRecord
     AccountTransaction.where(account_id: id, tr_type: 'C').sum(:amount) 
   end
 
- 
+  def account_balance
+    b = self[:balance] - debits + credits
+  end
 
   def prev_balance(date, app_id)
 
     debits =  AccountAppointment.where(:account_id => id, :tr_type => 'D').where('account_transactions.date <= ?', date).where('account_transactions.id <?', app_id).order(created_at: :desc, deb_cre: :desc).sum(:amount)
     credits =  AccountAppointment.where(:account_id => id, :tr_type => 'C').where('account_transactions.date <= ?', date).where('account_transactions.id <?', app_id).order(created_at: :desc, deb_cre: :desc).sum(:amount)
 
-    result = initial_balance - debits + credits
+    result = balance - debits + credits
 
   end
 end

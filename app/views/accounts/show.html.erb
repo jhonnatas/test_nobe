@@ -1,21 +1,25 @@
 <h3>Detalhes da conta</h3>
 
-<p>Banco número: <%= @account.bk_number %></p>
-
 <% if @account.account_active? %>
-    <p>Conta ativa</p>
+	<p>Conta ativa</p>
 <% else%>
-    <p>Conta inativa</p>
-<% end %>    
+  <p>Conta inativa</p>
+<% end %>   
 
 <p>Data de abertura:  <%= l @account.created_at, format: "%d/%m/%Y" %></p>
+
+<p>Banco número: <%= @account.bk_number %></p>
+
 <p>Agência: <%= @account.bk_branch %></p>
-<p>Conta número: <%= @account.account_number %></p> 
+<p>Conta número: <%= @account.account_number %></p>
+<p>Saldo atual: <%= @account.account_balance %></p>
 
 <p>Detalhes: <%= @account.details %></p>
 
+<p>Transações realizadas</p>
+<p>Depósito para abrir abertura da conta: <%= @account.balance %>
 <% @account.account_transactions.each do |t| %>
-    <p>tipo: <%= t.tr_type %> - valor: <%= t.amount %></p>
+	<p>tipo: <%= t.tr_type %> - valor: <%= t.amount %></p>
 <% end %>
 
 <%= render 'form_transf' %>

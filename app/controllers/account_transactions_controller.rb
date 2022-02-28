@@ -37,11 +37,6 @@ class AccountTransactionsController < ApplicationController
     end 
   end 
 
-  def transf
-    @to_account = Account.find(params[:to_dest_account])
-
-
-
   private 
   def account_transaction_params 
     params.require(:account_transaction).permit(:date, :doc_ref, :tr_type, :description, :amount, :account_id)
