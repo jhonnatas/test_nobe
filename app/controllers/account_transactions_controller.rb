@@ -45,6 +45,7 @@ class AccountTransactionsController < ApplicationController
   def check_active
     redirect_to accounts_path, alert: 'Por favor, escolha uma conta ativa.' unless params[:account_active] == "true"
   end
+
 end
 
 

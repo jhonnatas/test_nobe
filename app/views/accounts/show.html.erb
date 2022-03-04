@@ -1,10 +1,6 @@
 <h3>Detalhes da conta</h3>
 
-<% if @account.account_active? %>
-	<p>Conta ativa</p>
-<% else%>
-  <p>Conta inativa</p>
-<% end %>   
+<%= check_active (@account) %>
 
 <p>Data de abertura:  <%= l @account.created_at, format: "%d/%m/%Y" %></p>
 
@@ -12,19 +8,20 @@
 
 <p>Agência: <%= @account.bk_branch %></p>
 <p>Conta número: <%= @account.account_number %></p>
-<p>Saldo atual: <%= @account.account_balance %></p>
+<p>Saldo atual: <%= number_to_currency @account.account_balance %></p> <!-- number_to_currency is a i18n helper method -->
 
 <p>Detalhes: <%= @account.details %></p>
 
+<%= render 'form_transf' %><!--renders the form that allows transferences between the accoutns -->
+
 <p>Transações realizadas</p>
-<p>Depósito para abrir abertura da conta: <%= @account.balance %>
+<p>Depósito para abertura da conta: <%= number_to_currency @account.balance %>
+
 <% @account.account_transactions.each do |t| %>
-	<p>tipo: <%= t.tr_type %> - valor: <%= t.amount %></p>
+	<p>Data <%= l t.created_at, format: "%d/%m/%Y"%> -tipo: <%= t.tr_type %> - valor: <%= number_to_currency t.amount %> - Descrição: <%= t.description %> - Conta: <%= t.doc_ref %></p>
 <% end %>
 
-<%= render 'form_transf' %>
-
-<!-- sending the accounts id to transactions -->
+<!-- Sending the accounts id to transactions -->
 <%= link_to 'Depósito', new_account_transaction_path(account_id: @account.id, tr_type: 'C', account_active: @account.account_active) %>
 <%= link_to 'Saque', new_account_transaction_path(account_id: @account.id, tr_type: 'D', account_active: @account.account_active) %>
 
