@@ -1,16 +1,28 @@
 <p>Data: <%= l Time.now, format: "%d/%m/%Y" %></p>
 
 <%= form_for(@account_transaction) do |f| %>
+<div class="card">
+  <div class="card-body">
     <%= f.hidden_field :account_id , value: params[:account_id] %>
     <%= f.hidden_field :tr_type, value: params[:tr_type] %>
-    <%= f.label :doc_ref, 'Documento de referência' %>
-    <%= f.text_field :doc_ref %>
-    <%= f.label :description, 'Descrição' %>
-    <%= f.text_field :description %>
-    <%= f.label :balance, 'Quantia' %>
-    <%= f.number_field :amount, min: 0.01, step: 0.01 %>
-    <%= f.submit 'Realizar transação', data: {confirm: 'Tem certeza?'} %>
+    
+		<div class='mb-3'> 
+			<%=f. label 'Documento de referencia' %>    
+			<%= f.text_field :doc_ref, { class: 'form-control', placeholder: 'Algum código ou referência que deseja informar' } %>
+		</div>
+
+		<div class='mb-3'>   
+				<%=f. label 'Descrição' %>  
+			<%= f.text_field :description, { class: 'form-control', placeholder: 'Descrição da transação' } %>
+		</div>
+
+		<div class='mb-3'>
+			<%=f. label 'Quantia' %>   
+			<%= f.number_field :amount, min: 0.01, step: 0.01, class: 'form-control' %>
+		</div>		
+
+   	<%= f.submit 'Realizar transação', class: 'btn btn-success', data: {confirm: 'Tem certeza?'} %>
+   	<%= link_to 'Cancelar',accounts_path, class: 'btn btn-primary' %>
+  </div>
+</div>
 <% end %>
-
-
-

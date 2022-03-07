@@ -1,10 +1,7 @@
-<% if params[:tr_type] == 'C'%>
-    <h3>Deṕosito</h3>
-<% else %>
-    <h3>Saque</h3>
-<% end %>
+<h4><%= dep_or_saq(params[:tr_type]) %></h4><!--this is a helper -->
  
 <% if (params.has_key?(:account)) %>
-    <p>Conta: <%= params[:account]%> </p>
+  <p>Conta: <%= params[:account]%> </p>
 <%end%>
+
 <%= render 'form'%>
