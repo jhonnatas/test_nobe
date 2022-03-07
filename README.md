@@ -1,24 +1,28 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h1 align="center">
+    Nobe-Bank
+</h1>
+<p align="center">🚀Sistema de controle financeiro</p>
+<p align="center">Um sistema construído em Ruby on Rails para aprendizagem e teste.</p>
 
-Things you may want to cover:
+<h4 align="center"> 
+	🚧 Sistema em construção...🚧
+</h4>
 
-* Ruby version
+### Features
 
-* System dependencies
+- [x] Gerenciamento de usuários
+- [x] Gerenciamento de contas
+- [x] Gerenciamento dos depósitos e saques
+- [x] Transferencias entre contas
+- [ ] Extrato da conta com filtro de data
 
-* Configuration
+### 🛠 Tecnologias
 
-* Database creation
+As seguintes ferramentas estão sendo usadas na construção do projeto:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [Ruby/Rails](https://github.com/rails/rails)
+- [Node.js](https://nodejs.org/en/)
+- [CSS3](https://reactnative.dev/)
+- [HTML5](https://www.typescriptlang.org/)
+- [Postgresql](https://www.postgresql.org/)
