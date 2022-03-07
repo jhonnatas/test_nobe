@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Data</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Descrição</th>
+			<th scope="col">Conta</th>
+    </tr>
+  </thead>
+
+	<tbody>    
+		<% @account.account_transactions.each do |t| %>
+			<tr>
+				<th scope="row"><%= l t.created_at, format: "%d/%m/%Y"%></td>
+				<td><%= t.tr_type %></td>
+				<td><%= number_to_currency t.amount %></td>
+				<td><%= t.description %></td>
+				<td><%= t.doc_ref %></td>
+			</tr>
+		<% end %>
+  </tbody>
+</table>

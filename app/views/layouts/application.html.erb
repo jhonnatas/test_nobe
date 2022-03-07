@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NobeBank</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title> Nobe - Bank </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,15 +9,44 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <!--This code prints flash messages -->
-    <% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %>">
-      <%= value %>
-    </div>
-    <% end %>
+  <body data-scrollbar-auto-hide="n" class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      <!--This code prints flash messages -->
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+          <%= value %>
+        </div>
+      <% end %>
 
-    <%= yield %>
+      <%= render "base/header" %>
+      <%= render "base/sidebar" %>
 
+      <div class="content-wrapper">
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">                
+              </div><!-- /.col -->
+              <!--
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Starter Page</li>
+                </ol>
+              </div>-->
+            </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
+        </div>
+
+        <div class="content container-fluid">
+          <div class="container-fluid">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+
+      <%= render "base/footer" %>
+      <%= render "base/control_sidebar" %>
+    <div>
   </body>
 </html>

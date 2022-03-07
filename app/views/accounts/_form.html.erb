@@ -1,17 +1,35 @@
-<h3>Cadastrar conta</h3>
-
 <%= form_for(@account) do |f| %>
-    <%= f.label :account_active, 'Conta ativa' %>
-    <%= f.check_box :account_active %>
-    <%= f.label :account_number, 'número' %>
-    <%= f.text_field :account_number %>
-    <%= f.label :bk_branch, 'Agência' %>
-    <%= f.text_field :bk_branch %>
-    <%= f.label :bk_number, 'Número do banco' %>
-    <%= f.text_field :bk_number %>
-    <%= f.label :balance, 'Deposito de abertura de conta' %>
-    <%= f.number_field :balance, min: 0.00, step: 0.01 %>
-    <%= f.label :details, 'Detalhes' %>
-    <%= f.text_area :details %>
-    <%= f.submit %>
+<div class="card">
+  <div class="card-body">
+    
+		<div class="mb-3">
+			<%= f.label 'Conta ativa', { class: "form-label"} %>
+			<%= f.check_box :account_active%>
+		</div>
+
+		<div class="mb-3">     
+			<%= f.text_field :bk_branch, { class: "form-control", placeholder: "Agência" } %>
+		</div>
+
+		<div class="mb-3">   
+			<%= f.text_field :bk_number, { class: "form-control", placeholder: "Número do banco" } %>
+		</div>
+
+		<div class="mb-3">   
+			<%= f.text_field :account_number, { class: "form-control", placeholder: "Número da conta" } %>
+		</div>	
+
+		<div class="mb-3">
+			<%= f.label 'Depósito inicial', { class: "form-label"} %>
+			<%= f.number_field :balance, min: 0.00, step: 0.01, class: "form-control" %>
+		</div>
+
+		<div class="mb-3">      
+			<%= f.text_area :details, { class: "form-control", placeholder: "Detalhes" } %>
+		</div>
+
+    <%= f.submit "Criar", class: "btn btn-primary" %>
+
+  </div>
+</div>
 <% end %>

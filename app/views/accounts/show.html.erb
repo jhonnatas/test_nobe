@@ -1,31 +1,72 @@
-<h3>Detalhes da conta</h3>
+<div class="row">
+  <div class="col-lg-3 col-6">
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3><%= number_to_currency @account.account_balance %></h3><!-- number_to_currency is a i18n helper method -->
+        <p>Saldo atual</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-bag"></i>
+      </div>
+      <a href="#" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-6">
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3><%= number_to_currency @account.credits %></h3>
+        <p>Total dos créditos</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+      </div>
+      <a href="#" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-6">
+    <div class="small-box bg-warning">
+      <div class="inner">
+        <h3><%= number_to_currency @account.balance %></h3>
+        <p>Depósito de abertura da conta</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-person-add"></i>
+      </div>
+      <a href="#" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-6">
+    <div class="small-box bg-danger">
+      <div class="inner">
+        <h3><%= number_to_currency @account.debits %></h3>
+        <p>Total dos débitos</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-pie-graph"></i>
+      </div>
+      <a href="#" class="small-box-footer">Mais informações <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+</div>
 
-<%= check_active (@account) %>
+<div class="card text-white bg-dark mb-3">
+  <div class="card-header">
+		<p>Agência: <%= @account.bk_branch %> - Conta número: <%= @account.account_number %> - Transferir para:</p>
+		<%= render 'form_transf' %>
+	</div>
+</div>
 
-<p>Data de abertura:  <%= l @account.created_at, format: "%d/%m/%Y" %></p>
-
-<p>Banco número: <%= @account.bk_number %></p>
-
-<p>Agência: <%= @account.bk_branch %></p>
-<p>Conta número: <%= @account.account_number %></p>
-<p>Saldo atual: <%= number_to_currency @account.account_balance %></p> <!-- number_to_currency is a i18n helper method -->
-
-<p>Detalhes: <%= @account.details %></p>
-
-<%= render 'form_transf' %><!--renders the form that allows transferences between the accoutns -->
-
-<p>Transações realizadas</p>
-<p>Depósito para abertura da conta: <%= number_to_currency @account.balance %>
-
-<% @account.account_transactions.each do |t| %>
-	<p>Data <%= l t.created_at, format: "%d/%m/%Y"%> -tipo: <%= t.tr_type %> - valor: <%= number_to_currency t.amount %> - Descrição: <%= t.description %> - Conta: <%= t.doc_ref %></p>
-<% end %>
+<div class="card text-dark bg-light mb-3">
+  <div class="card-header">Suas movimentações</div>
+  <div class="card-body">
+    <%= render 'table' %>
+  </div>
+</div>
 
 <!-- Sending the accounts id to transactions -->
-<%= link_to 'Depósito', new_account_transaction_path(account_id: @account.id, tr_type: 'C', account_active: @account.account_active) %>
-<%= link_to 'Saque', new_account_transaction_path(account_id: @account.id, tr_type: 'D', account_active: @account.account_active) %>
+<%= link_to 'Depósito', new_account_transaction_path(account_id: @account.id, tr_type: 'C', account_active: @account.account_active), class: 'btn btn-success' %>
+<%= link_to 'Saque', new_account_transaction_path(account_id: @account.id, tr_type: 'D', account_active: @account.account_active), class: 'btn btn-warning' %>
+<%= link_to 'Voltar', accounts_path, class: 'btn btn-primary'%>
 
-
-<%= link_to 'Voltar', accounts_path, class: 'btn btn-default'%>
 
 

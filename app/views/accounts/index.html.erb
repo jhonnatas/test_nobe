@@ -3,6 +3,8 @@
 <%= link_to 'Cadastrar conta', new_account_path %>
 <p>Seja bemvindo(a), <%= current_user.email %>! Essas são as suas contas:</p>
 
+
 <% @accounts.each do |account| %>
-	<p><%= link_to account.account_number, account_path(account), class: 'link' %> - Status: <%= check_active(account) %></p>    
+	<p><%= link_to account.account_number, account_path(account), class: 'link' %> - Status: <%= check_active(account) %> - Data criação: <%= l account.created_at, format: "%d/%m/%Y" %> - Detalhes: 	Detalhes: <%= account.details %> </p>  
+	
 <% end %>
