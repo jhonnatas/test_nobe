@@ -10,6 +10,7 @@
   </head>
 
   <body data-scrollbar-auto-hide="n" class="hold-transition sidebar-mini layout-fixed">
+    <% if user_signed_in? %>
     <div class="wrapper">
       <!--This code prints flash messages -->
       <% flash.each do |key, value| %>
@@ -48,5 +49,8 @@
       <%= render "base/footer" %>
       <%= render "base/control_sidebar" %>
     <div>
+    <% else %>
+      <%= render template: "devise/sessions/new" %>
+    <% end %>
   </body>
 </html>

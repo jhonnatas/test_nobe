@@ -54,10 +54,13 @@
 		<p>Agência: <%= @account.bk_branch %> - Conta número: <%= @account.account_number %> - Transferir para:</p>
 		<%= render 'form_transf' %>
 	</div>
+    <div class="card-header">
+		<%= render 'form_filter' %>
+	</div>
 </div>
 
 <div class="card text-dark bg-light mb-3">
-  <div class="card-header">Suas movimentações</div>
+  <div class="card-header"><i class="fa fa-exchange" aria-hidden="true"></i>  Suas movimentações</div>
   <div class="card-body">
     <%= render 'table' %>
   </div>

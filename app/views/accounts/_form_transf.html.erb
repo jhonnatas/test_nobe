@@ -1,6 +1,7 @@
 <%= form_tag("/transference", :method => "post") do %>
 	<div class="row">
-		<div class="col-auto">			
+		<%= hidden_field_tag 'origin_account_id', @account.id %>
+		<div class="col-auto">				
 			<%= select_tag 'dest_account_id', options_for_select(Account.where.not(account_number: @account.account_number).collect{ |c| [c.account_number, c.id]}), class: "form-select" %>
 		</div>
 		<div class="col-auto">		
@@ -9,6 +10,6 @@
 		<div class="col-auto">
 			<%= submit_tag "Transferir", class: 'btn btn-primary' %>
 		</div>
-</div>
+	</div>
 <% end %>
 

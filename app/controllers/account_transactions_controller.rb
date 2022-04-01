@@ -1,11 +1,17 @@
 class AccountTransactionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_active
+  before_action :check_active, only: [:show, :edit, :update, :destroy]
+
 
   def index
-  
+    if (params[:start_date].present? && params[:end_date].present?)
+      @account_filter = AccountTransaction.where(created_at: [params[:start_date].to_date..params[:end_date].to_date], account_id: params[:origin_account_id])
+      #@account_filter = AccountTransaction.all 
+    else  
+      redirect_to account_path(params[:origin_account_id].to_i), notice: 'Por favor, defina as datas de início e fim.'
+    end
   end
-
+  
   def new
     @account_transaction = AccountTransaction.new 
   end
@@ -39,7 +45,7 @@ class AccountTransactionsController < ApplicationController
 
   private 
   def account_transaction_params 
-    params.require(:account_transaction).permit(:date, :doc_ref, :tr_type, :description, :amount, :account_id)
+    params.require(:account_transaction).permit(:date, :doc_ref, :tr_type, :description, :amount, :account_id, :origin_account_id, :start_date, :end_date)
   end
   
   def check_active

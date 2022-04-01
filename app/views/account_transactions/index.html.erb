@@ -1,8 +1,16 @@
-<h1>AccountTransactions#index</h1>
+
 <p>Find me in app/views/account_transactions/index.html.erb</p>
 
-<% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %>">
-            <%= value %>
-      </div>
-<% end %>
+<p>Perído entre: <%= params[:start_date] %> e <%= params[:end_date] %></p>
+
+<table>
+  <tbody>
+    <% @account_filter.each do |t| %>
+      <tr>
+        <td>Data <%= l t.created_at, format: "%d/%m/%Y" %> - </td>
+        <td>Valor <%= number_to_currency t.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

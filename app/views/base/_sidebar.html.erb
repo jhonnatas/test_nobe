@@ -15,7 +15,7 @@
           <img src="https://avatars.githubusercontent.com/u/289846?v=4" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><%= current_user.email.truncate 23 %></a><!-- truncate shows only the 23 first characters -->
+          <a href="#" class="d-block"><%= current_user.email.truncate 23 if user_signed_in? %></a><!-- truncate shows only the 23 first characters -->
         </div>
       </div>
 

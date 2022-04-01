@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
-    <h3>Seja bemvindo, <%= current_user.email %>!</h3>
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <h4>Seja bemvindo, <%= current_user.email %>!</h4>
+    <%= link_to "Sign out", destroy_user_session_path %>
     <p>Seu código de cliente é: <%= current_user.id %></p>
 <% else %>
-    <h3>Desculpe, vocẽ não está logado ainda </h3>
+    <h4>Desculpe, você não está logado ainda </h4>
 <% end %>
