@@ -1,7 +1,7 @@
 require 'util/appoints'
 
 class AccountsController < ApplicationController
-  before_action :authenticate_user!
+  
 
   def index
     @accounts = Account.where(user_id: current_user.id ) #Only the current user's accounts listed    

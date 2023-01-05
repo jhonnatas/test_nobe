@@ -1,5 +1,5 @@
 class AccountTransactionsController < ApplicationController
-  before_action :authenticate_user!
+
   before_action :check_active, only: [:show, :edit, :update, :destroy]
 
 
