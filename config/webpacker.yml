@@ -90,7 +90,3 @@ production:
 
   # Cache manifest.json for performance
   cache_manifest: true
-  
-  # Used for AndminLTE
-  resolved_paths: ['app/assets']
-
