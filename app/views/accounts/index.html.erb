@@ -5,6 +5,10 @@
 
 
 <% @accounts.each do |account| %>
-	<p><%= link_to account.account_number, account_path(account), class: 'link' %> - Status: <%= check_active(account) %> - Data criação: <%= l account.created_at, format: "%d/%m/%Y" %> - Detalhes: 	Detalhes: <%= account.details %> </p>  
-	
+	<p><%= link_to account.account_number, 
+		account_path(account), class: 'link' %> 
+		- Status: <%= check_active(account) %> 
+		- Data criação: <%= l account.created_at, format: "%d/%m/%Y" %> 
+		- Detalhes: <%= account.details %> 
+	</p>	
 <% end %>

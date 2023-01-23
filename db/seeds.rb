@@ -12,7 +12,7 @@
     account_number: Faker::Bank.account_number, 
     bk_number: Faker::Bank.bsb_number, 
     bk_branch: Faker::Bank.name,
-    details: Faker::Lorem.sentences,
+    details: Faker::Lorem.sentence(word_count: 5),
     user_id: 1,
     account_active: true,
     balance: 100.0)
