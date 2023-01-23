@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Account, :type => :model do
 
 	it 'saves with correct account data' do
-    account = create(:account)
-    expect(account).to be_valid
+   	account = create(:account)
+   	expect(account).to be_valid
   end
 	
 	it 'account is not valid without account number' do
